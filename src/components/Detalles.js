@@ -63,7 +63,7 @@ export default function Detalles(props) {
     function precio_unitario(row) {
 
         const precio_init = row.__EMPTY_1
-        const match1 = row.__EMPTY.match(/(\d+)/g).filter((e) => e==handelFilter(e)).length > 0 ? row.__EMPTY.match(/(\d+)/g).filter((e) => e==handelFilter(e)) : ['1']
+        const match1 =row.__EMPTY && row.__EMPTY.match(/(\d+)/g).filter((e) => e==handelFilter(e)).length > 0 ? row.__EMPTY.match(/(\d+)/g).filter((e) => e==handelFilter(e)) : ['1']
         const match_unidad = parseFloat(match1)
         const precio_1 = (precio_init) / (match_unidad === 5||6||1||10||24||25||50||100 ? match_unidad : 1)
         const precio_iva = (precio_1 + (0.21 * precio_1))
