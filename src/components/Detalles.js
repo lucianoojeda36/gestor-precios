@@ -43,7 +43,7 @@ function monthDosCifras() {
 
 }
 
-const elementos = [1,2,4,5,6,10,50,12,24,25,100]
+const elementos = [1,2,4,5,6,10,50,24,25,100]
 
 function handelFilter (e) {
     for (var i = 0; i < elementos.length; i++) {
@@ -65,14 +65,14 @@ export default function Detalles(props) {
         const precio_init = row.__EMPTY_1
         const match1 = row.__EMPTY.match(/(\d+)/g).filter((e) => e==handelFilter(e)).length > 0 ? row.__EMPTY.match(/(\d+)/g).filter((e) => e==handelFilter(e)) : ['1']
         const match_unidad = parseFloat(match1)
-        const precio_1 = (precio_init) / (match_unidad === 5 || 6 || 12 || 1 || 10 || 100 ? match_unidad : 1)
+        const precio_1 = (precio_init) / (match_unidad === 5||6||1||10||24||25||50||100 ? match_unidad : 1)
         const precio_iva = (precio_1 + (0.21 * precio_1))
         const precio_final = parseFloat(`${precio_iva + ((props.porcentaje / 100) * precio_iva)}`).toFixed(2)
 
         // console.log(precio_init, "precio_int")
         // console.log(match1, "match1")
         // console.log(row.__EMPTY.match(/(\d+)/g).filter((e) => e == handelFilter(e)), "probando")
-        // console.log(row.__EMPTY.match(/(\d+)/g), "con coma")
+        // console.log(row.__EMPTY.match(/x(\d+)/g), "con coma")
         // console.log(match_unidad, "match_unidad")
         // console.log(precio_1, "precio_1")
         // console.log(precio_iva, "precio_iva")
